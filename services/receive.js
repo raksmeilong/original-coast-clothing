@@ -54,7 +54,7 @@ module.exports = class Receive {
       console.error(error);
       responses = {
         text: `An error has occured: '${error}'. We have been notified and \
-        will fix the issue shortly!`
+        will fix the issue shortly!`,
       };
     }
 
@@ -100,24 +100,24 @@ module.exports = class Receive {
       response = [
         Response.genText(
           i18n.__("fallback.any", {
-            message: event.message.text
+            message: event.message.text,
           })
         ),
         Response.genText(i18n.__("get_started.guidance")),
         Response.genQuickReply(i18n.__("get_started.help"), [
           {
             title: i18n.__("menu.suggestion"),
-            payload: "CURATION"
+            payload: "CURATION",
           },
           {
             title: i18n.__("menu.help"),
-            payload: "CARE_HELP"
+            payload: "CARE_HELP",
           },
           {
             title: i18n.__("menu.product_launch"),
-            payload: "PRODUCT_LAUNCH"
-          }
-        ])
+            payload: "PRODUCT_LAUNCH",
+          },
+        ]),
       ];
     }
 
@@ -135,12 +135,12 @@ module.exports = class Receive {
     response = Response.genQuickReply(i18n.__("fallback.attachment"), [
       {
         title: i18n.__("menu.help"),
-        payload: "CARE_HELP"
+        payload: "CARE_HELP",
       },
       {
         title: i18n.__("menu.start_over"),
-        payload: "GET_STARTED"
-      }
+        payload: "GET_STARTED",
+      },
     ]);
 
     return response;
@@ -222,30 +222,30 @@ module.exports = class Receive {
         Response.genQuickReply(i18n.__("get_started.help"), [
           {
             title: i18n.__("care.order"),
-            payload: "CARE_ORDER"
+            payload: "CARE_ORDER",
           },
           {
             title: i18n.__("care.billing"),
-            payload: "CARE_BILLING"
+            payload: "CARE_BILLING",
           },
           {
             title: i18n.__("care.other"),
-            payload: "CARE_OTHER"
-          }
-        ])
+            payload: "CARE_OTHER",
+          },
+        ]),
       ];
     } else if (payload.includes("BOOK_APPOINTMENT")) {
       response = [
         Response.genText(i18n.__("care.appointment")),
-        Response.genText(i18n.__("care.end"))
+        Response.genText(i18n.__("care.end")),
       ];
     } else if (payload === "RN_WEEKLY") {
       response = {
-        text: `[INFO]The following message is a sample weekly recurring notification. This is usually sent outside the initial 24-hour window for users who have opted in to weekly messages.`
+        text: `[INFO]The following message is a sample weekly recurring notification. This is usually sent outside the initial 24-hour window for users who have opted in to weekly messages.`,
       };
     } else {
       response = {
-        text: `This is a default postback message for payload: ${payload}!`
+        text: `This is a default postback message for payload: https://beta.boorran.com/products/${payload}!`,
       };
     }
 
@@ -263,23 +263,23 @@ module.exports = class Receive {
     let response = Response.genQuickReply(welcomeMessage, [
       {
         title: i18n.__("menu.suggestion"),
-        payload: "CURATION"
+        payload: "CURATION",
       },
       {
         title: i18n.__("menu.help"),
-        payload: "CARE_HELP"
+        payload: "CARE_HELP",
       },
       {
         title: i18n.__("menu.product_launch"),
-        payload: "PRODUCT_LAUNCH"
-      }
+        payload: "PRODUCT_LAUNCH",
+      },
     ]);
 
     let requestBody = {
       recipient: {
-        [type]: object_id
+        [type]: object_id,
       },
-      message: response
+      message: response,
     };
     GraphApi.callSendApi(requestBody);
   }
@@ -299,16 +299,16 @@ module.exports = class Receive {
       // For chat plugin
       requestBody = {
         recipient: {
-          user_ref: this.user.psid
+          user_ref: this.user.psid,
         },
-        message: response
+        message: response,
       };
     } else {
       requestBody = {
         recipient: {
-          id: this.user.psid
+          id: this.user.psid,
         },
-        message: response
+        message: response,
       };
     }
 
@@ -320,18 +320,18 @@ module.exports = class Receive {
         // For chat plugin
         requestBody = {
           recipient: {
-            user_ref: this.user.psid
+            user_ref: this.user.psid,
           },
           message: response,
-          persona_id: persona_id
+          persona_id: persona_id,
         };
       } else {
         requestBody = {
           recipient: {
-            id: this.user.psid
+            id: this.user.psid,
           },
           message: response,
-          persona_id: persona_id
+          persona_id: persona_id,
         };
       }
     }
@@ -352,9 +352,9 @@ module.exports = class Receive {
     }
     requestBody = {
       recipient: {
-        notification_messages_token: notificationMessageToken
+        notification_messages_token: notificationMessageToken,
       },
-      message: response
+      message: response,
     };
 
     setTimeout(() => GraphApi.callSendApi(requestBody), delay);

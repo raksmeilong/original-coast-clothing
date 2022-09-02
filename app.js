@@ -27,7 +27,7 @@ var users = {};
 // Parse application/x-www-form-urlencoded
 app.use(
   urlencoded({
-    extended: true
+    extended: true,
   })
 );
 
@@ -132,10 +132,10 @@ app.post("/webhook", (req, res) => {
               // Make call to UserProfile API only if user is not guest
               let user = new User(senderPsid);
               GraphApi.getUserProfile(senderPsid)
-                .then(userProfile => {
+                .then((userProfile) => {
                   user.setProfile(userProfile);
                 })
-                .catch(error => {
+                .catch((error) => {
                   // The profile is unavailable
                   console.log(JSON.stringify(body));
                   console.log("Profile is unavailable:", error);

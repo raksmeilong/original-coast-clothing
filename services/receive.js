@@ -245,7 +245,7 @@ module.exports = class Receive {
       };
     } else {
       response = {
-        text: `This is a default postback message for payload: https://beta.boorran.com/products/${payload}!`,
+        text: `This is a website postback message for payload: https://beta.boorran.com/products/${payload}!`,
       };
     }
 

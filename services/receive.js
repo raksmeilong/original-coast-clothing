@@ -166,13 +166,13 @@ module.exports = class Receive {
       payload = postback.payload;
     }
 
-    return this.handlePayload(payload.toUpperCase());
+    return this.handlePayload(payload);
   }
 
   // Handles referral events
   handleReferral() {
     // Get the payload of the postback
-    let payload = this.webhookEvent.referral.ref();
+    let payload = this.webhookEvent.referral.ref;
 
     return this.handlePayload(payload);
   }

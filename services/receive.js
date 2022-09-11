@@ -219,20 +219,20 @@ module.exports = class Receive {
       response = [
         Response.genText(i18n.__("chat_plugin.prompt")),
         Response.genText(i18n.__("get_started.guidance")),
-        Response.genQuickReply(i18n.__("get_started.help"), [
-          {
-            title: i18n.__("care.order"),
-            payload: "CARE_ORDER",
-          },
-          {
-            title: i18n.__("care.billing"),
-            payload: "CARE_BILLING",
-          },
-          {
-            title: i18n.__("care.other"),
-            payload: "CARE_OTHER",
-          },
-        ]),
+        // Response.genQuickReply(i18n.__("get_started.help"), [
+        //   {
+        //     title: i18n.__("care.order"),
+        //     payload: "CARE_ORDER",
+        //   },
+        //   {
+        //     title: i18n.__("care.billing"),
+        //     payload: "CARE_BILLING",
+        //   },
+        //   {
+        //     title: i18n.__("care.other"),
+        //     payload: "CARE_OTHER",
+        //   },
+        // ]),
       ];
     } else if (payload.includes("BOOK_APPOINTMENT")) {
       response = [
@@ -257,8 +257,8 @@ module.exports = class Receive {
       i18n.__("get_started.welcome") +
       " " +
       i18n.__("get_started.guidance") +
-      ". " +
-      i18n.__("get_started.help");
+      ". " ;
+      // i18n.__("get_started.help");
 
     let response = Response.genQuickReply(welcomeMessage, [
       {
